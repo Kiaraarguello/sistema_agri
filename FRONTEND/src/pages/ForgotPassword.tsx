@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 export default function ForgotPassword() {
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -32,7 +33,7 @@ export default function ForgotPassword() {
         setCargando(true);
 
         try {
-            const res = await fetch("http://localhost:4000/api/auth/forgot-password", {
+            const res = await fetch(`${API_URL}/auth/forgot-password`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })

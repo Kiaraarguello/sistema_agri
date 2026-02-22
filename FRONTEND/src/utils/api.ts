@@ -1,5 +1,10 @@
+import { API_URL } from "../config";
+
 export const apiFetch = async (url: string, options: any = {}) => {
     const token = localStorage.getItem("token");
+
+    // Si la URL no es absoluta (no empieza con http), añadir API_URL
+    const fullUrl = url.startsWith("http") ? url : `${API_URL}${url.startsWith("/") ? "" : "/"}${url}`;
 
     // Preparar cabeceras
     const headers = {
@@ -11,7 +16,7 @@ export const apiFetch = async (url: string, options: any = {}) => {
         headers["Authorization"] = `Bearer ${token}`;
     }
 
-    const response = await fetch(url, {
+    const response = await fetch(fullUrl, {
         ...options,
         headers
     });

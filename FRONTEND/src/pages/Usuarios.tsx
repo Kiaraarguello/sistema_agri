@@ -46,7 +46,7 @@ export default function Usuarios() {
     const cargarUsuarios = async () => {
         setCargando(true);
         try {
-            const res = await apiFetch("http://localhost:4000/api/usuarios");
+            const res = await apiFetch("/usuarios");
             const data = await res.json();
             setUsuarios(data);
         } catch (error) {

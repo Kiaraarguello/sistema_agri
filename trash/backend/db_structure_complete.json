@@ -1,0 +1,1224 @@
+{
+  "tables": [
+    {
+      "Tables_in_agrimensura_db": "calendario_notas"
+    },
+    {
+      "Tables_in_agrimensura_db": "clientes"
+    },
+    {
+      "Tables_in_agrimensura_db": "expediente"
+    },
+    {
+      "Tables_in_agrimensura_db": "expediente_cuotas"
+    },
+    {
+      "Tables_in_agrimensura_db": "expediente_firmante"
+    },
+    {
+      "Tables_in_agrimensura_db": "expediente_presupuesto"
+    },
+    {
+      "Tables_in_agrimensura_db": "expediente_presupuesto_items"
+    },
+    {
+      "Tables_in_agrimensura_db": "expediente_terreno"
+    },
+    {
+      "Tables_in_agrimensura_db": "honorarios_categorias"
+    },
+    {
+      "Tables_in_agrimensura_db": "honorarios_notas"
+    },
+    {
+      "Tables_in_agrimensura_db": "honorarios_servicios"
+    },
+    {
+      "Tables_in_agrimensura_db": "usuarios"
+    }
+  ],
+  "calendario_notas": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "fecha",
+      "Type": "date",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "contenido",
+      "Type": "text",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "tipo",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "nota",
+      "Extra": ""
+    },
+    {
+      "Field": "created_at",
+      "Type": "timestamp",
+      "Null": "YES",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": "DEFAULT_GENERATED"
+    }
+  ],
+  "clientes": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "nombre_completo",
+      "Type": "varchar(255)",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "dni_cuil",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "telefono",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "email",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "direccion",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "localidad",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "provincia",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "notas",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_alta",
+      "Type": "datetime",
+      "Null": "YES",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": "DEFAULT_GENERATED"
+    },
+    {
+      "Field": "activo",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "1",
+      "Extra": ""
+    }
+  ],
+  "expediente": [
+    {
+      "Field": "id",
+      "Type": "bigint",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "cliente",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "direccion",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "depto",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "municipio",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "seccion",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "chacra",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "manzana",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "parcela",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "lote",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "partida_inmobiliaria",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "objeto",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_relevamiento",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_presentacion_municipalidad",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "expte_muni",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "certificado_catastral",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "informe_dominial",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_ingreso_dominio",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_egreso_dominio",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "titular",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "responsable",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "telefono_contacto",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_presupuesto",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "falta_relevar",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "importe_presupuesto",
+      "Type": "decimal(10,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "entrega",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_libre_deuda",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "aprobacion_muni",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "disposicion_n",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "presentacion_dgc",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "expediente_n",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "previa_dgc",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "definitiva_dgc",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "visado_dgc",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "plano_registrado",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "correccion",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "campo1",
+      "Type": "longtext",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "terminado",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "cliente_id",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "notas",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "materiales",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_apertura",
+      "Type": "datetime",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "pdf_catastro_file",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "cert_catastral_file",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "notas_relevamiento",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    }
+  ],
+  "expediente_cuotas": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "presupuesto_id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "MUL",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "numero",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "monto",
+      "Type": "decimal(12,2)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "pagado",
+      "Type": "tinyint(1)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_pago",
+      "Type": "datetime",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    }
+  ],
+  "expediente_firmante": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "expediente_id",
+      "Type": "bigint",
+      "Null": "YES",
+      "Key": "UNI",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "tipo_firmante",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "libre_deuda",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "dni_titular",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "dni_poseedor",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "dni_responsable",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "escribano",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "cuil_empresa",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "doc_firmante",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    }
+  ],
+  "expediente_presupuesto": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "expediente_id",
+      "Type": "bigint",
+      "Null": "YES",
+      "Key": "UNI",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "tiempo_ejecucion",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "requisitos",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "senas",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "subtotal_servicios",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "total_a_pagar",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "cantidad_cuotas",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "1",
+      "Extra": ""
+    },
+    {
+      "Field": "cuotas_iguales",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "1",
+      "Extra": ""
+    }
+  ],
+  "expediente_presupuesto_items": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "presupuesto_id",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "MUL",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "servicio_id",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "nombre",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "monto_base",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "unidad_base",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "monto_variable",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "unidad_variable",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "cantidad_variable",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "total_item",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "monto_porcentaje",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "porcentaje",
+      "Type": "decimal(5,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "monto_variable2",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "unidad_variable2",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "",
+      "Extra": ""
+    },
+    {
+      "Field": "cantidad_variable2",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "realizado",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "fecha_realizacion",
+      "Type": "date",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    }
+  ],
+  "expediente_terreno": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "expediente_id",
+      "Type": "bigint",
+      "Null": "YES",
+      "Key": "UNI",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "designacion",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "direccion",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "latitud",
+      "Type": "decimal(10,8)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "longitud",
+      "Type": "decimal(11,8)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "pdf_catastro",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "pdf_ploteo",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "cert_catastral",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    }
+  ],
+  "honorarios_categorias": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "tipo",
+      "Type": "varchar(255)",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "orden",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "otros",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    }
+  ],
+  "honorarios_notas": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "contenido",
+      "Type": "text",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "orden",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    }
+  ],
+  "honorarios_servicios": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "categoria_id",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "MUL",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "codigo",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "nombre",
+      "Type": "varchar(255)",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "monto_base",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "unidad_base",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "monto_variable",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "unidad_variable",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "observaciones",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "es_titulo",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "orden",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "monto_porcentaje",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "porcentaje",
+      "Type": "decimal(5,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "monto_variable2",
+      "Type": "decimal(12,2)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0.00",
+      "Extra": ""
+    },
+    {
+      "Field": "unidad_variable2",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "",
+      "Extra": ""
+    }
+  ],
+  "usuarios": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": null,
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "username",
+      "Type": "varchar(50)",
+      "Null": "NO",
+      "Key": "UNI",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "password",
+      "Type": "varchar(255)",
+      "Null": "NO",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "nombre",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "intentos_fallidos",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "bloqueado_hasta",
+      "Type": "datetime",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "created_at",
+      "Type": "timestamp",
+      "Null": "YES",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": "DEFAULT_GENERATED"
+    },
+    {
+      "Field": "email",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    },
+    {
+      "Field": "rol",
+      "Type": "enum('admin','cliente','agrimensor')",
+      "Null": "YES",
+      "Key": "",
+      "Default": "admin",
+      "Extra": ""
+    },
+    {
+      "Field": "activo",
+      "Type": "tinyint(1)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "1",
+      "Extra": ""
+    },
+    {
+      "Field": "expediente_id",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": null,
+      "Extra": ""
+    }
+  ]
+}

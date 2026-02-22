@@ -1,0 +1,130 @@
+[
+  {
+    "Field": "id",
+    "Type": "int",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+  },
+  {
+    "Field": "expediente_id",
+    "Type": "bigint",
+    "Null": "YES",
+    "Key": "UNI",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "designacion",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "direccion",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "latitud",
+    "Type": "decimal(10,8)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "longitud",
+    "Type": "decimal(11,8)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "pdf_catastro",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "pdf_ploteo",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "cert_catastral",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "depto",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "municipio",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "seccion",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "chacra",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "manzana",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "parcela",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "lote",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  }
+]

@@ -111,7 +111,7 @@ export default function Dashboard() {
 
   // Cargar datos desde el Backend
   useEffect(() => {
-    apiFetch("http://localhost:4000/api/dashboard/estadisticas")
+    apiFetch("/dashboard/estadisticas")
       .then((res) => res.json())
       .then((data) => {
         const stats = data.estadisticas || {};
@@ -158,7 +158,7 @@ export default function Dashboard() {
     const inicio = lunes.toISOString().split('T')[0];
     const fin = domingo.toISOString().split('T')[0];
 
-    apiFetch(`http://localhost:4000/api/calendario/rango?inicio=${inicio}&fin=${fin}`)
+    apiFetch(`/calendario/rango?inicio=${inicio}&fin=${fin}`)
       .then(res => res.json())
       .then(data => setNotasSemanales(data))
       .catch(err => console.error("Error cargando notas semanales:", err));
@@ -168,7 +168,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (modalEtapa) {
       setCargandoModal(true);
-      apiFetch(`http://localhost:4000/api/dashboard/expedientes/${modalEtapa}`)
+      apiFetch(`/dashboard/expedientes/${modalEtapa}`)
         .then(res => res.json())
         .then(data => {
           setExpedientesModal(data);
@@ -194,7 +194,7 @@ export default function Dashboard() {
     }
 
     const timer = setTimeout(() => {
-      apiFetch(`http://localhost:4000/api/dashboard/buscar?termino=${busqueda}`)
+      apiFetch(`/dashboard/buscar?termino=${busqueda}`)
         .then(res => res.json())
         .then(data => {
           setExpedientesVisibles(data || []);
@@ -207,7 +207,7 @@ export default function Dashboard() {
 
   const marcarAlertaVista = async (id: number) => {
     try {
-      await apiFetch(`http://localhost:4000/api/alertas/${id}/visto`, { method: 'PUT' });
+      await apiFetch(`/alertas/${id}/visto`, { method: 'PUT' });
       // Actualizar estado local
       setDatosDashboard(prev => ({
         ...prev,

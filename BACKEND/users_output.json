@@ -1,0 +1,27 @@
+[dotenv@17.2.3] injecting env (12) from .env -- tip: ??? audit secrets and track compliance: https://dotenvx.com/ops
+[
+  {
+    "id": 3,
+    "username": "cliente1",
+    "rol": "cliente",
+    "email": "cliente@ejemplo.com"
+  },
+  {
+    "id": 4,
+    "username": "DCA",
+    "rol": "agrimensor",
+    "email": ""
+  },
+  {
+    "id": 5,
+    "username": "admin",
+    "rol": "agrimensor",
+    "email": "kiaramarguello@gmail.com"
+  },
+  {
+    "id": 6,
+    "username": "kiki",
+    "rol": "cliente",
+    "email": "univkiara@gmail.com"
+  }
+]

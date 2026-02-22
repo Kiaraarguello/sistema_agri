@@ -1,0 +1,57 @@
+{
+  "expediente_1156": [
+    {
+      "id": 1156,
+      "cliente": "No cargado",
+      "direccion": "1842, Ayacucho, Centro, Centro de Integración Territorial Centro, Posadas, Municipio de Posadas, Departamento Capital, Provincia de Misiones, 3300, Argentina",
+      "depto": "1",
+      "municipio": 2,
+      "seccion": 5,
+      "chacra": 4,
+      "manzana": 5,
+      "parcela": "6",
+      "lote": null,
+      "partida_inmobiliaria": "8",
+      "objeto": "Unificación",
+      "fecha_relevamiento": null,
+      "fecha_presentacion_municipalidad": null,
+      "expte_muni": null,
+      "certificado_catastral": null,
+      "informe_dominial": null,
+      "fecha_ingreso_dominio": null,
+      "fecha_egreso_dominio": null,
+      "titular": "S/D",
+      "responsable": null,
+      "telefono_contacto": null,
+      "fecha_presupuesto": null,
+      "falta_relevar": 0,
+      "importe_presupuesto": "0.00",
+      "entrega": 0,
+      "fecha_libre_deuda": null,
+      "aprobacion_muni": 0,
+      "disposicion_n": null,
+      "presentacion_dgc": null,
+      "expediente_n": null,
+      "previa_dgc": null,
+      "definitiva_dgc": null,
+      "visado_dgc": null,
+      "plano_registrado": 0,
+      "correccion": 0,
+      "campo1": null,
+      "terminado": 0,
+      "cliente_id": 1063,
+      "notas": "Sin notas adicionales.",
+      "materiales": "Sin materiales registrados.",
+      "fecha_apertura": null,
+      "pdf_catastro_file": null,
+      "cert_catastral_file": null,
+      "notas_relevamiento": "",
+      "nombre_completo": "kiara"
+    }
+  ],
+  "last_expediente_id": [
+    {
+      "id": 1162
+    }
+  ]
+}

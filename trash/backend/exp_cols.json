@@ -1,0 +1,298 @@
+[
+  {
+    "Field": "id",
+    "Type": "bigint",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+  },
+  {
+    "Field": "cliente",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "partida_inmobiliaria",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "objeto",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fecha_relevamiento",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fecha_presentacion_municipalidad",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "expte_muni",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "certificado_catastral",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "informe_dominial",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fecha_ingreso_dominio",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fecha_egreso_dominio",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "titular",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "responsable",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fecha_presupuesto",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "falta_relevar",
+    "Type": "tinyint(1)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "importe_presupuesto",
+    "Type": "decimal(10,2)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "entrega",
+    "Type": "tinyint(1)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fecha_libre_deuda",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "aprobacion_muni",
+    "Type": "tinyint(1)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "disposicion_n",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "presentacion_dgc",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "expediente_n",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "previa_dgc",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "definitiva_dgc",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "visado_dgc",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "plano_registrado",
+    "Type": "tinyint(1)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "correccion",
+    "Type": "tinyint(1)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "campo1",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "terminado",
+    "Type": "tinyint(1)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "cliente_id",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "notas",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "materiales",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fecha_apertura",
+    "Type": "datetime",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "pdf_catastro_file",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "cert_catastral_file",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "notas_relevamiento",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "terreno_id",
+    "Type": "bigint",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  }
+]

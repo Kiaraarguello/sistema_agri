@@ -1,0 +1,38 @@
+[
+  {
+    "Tables_in_agrimensura_db": "calendario_notas"
+  },
+  {
+    "Tables_in_agrimensura_db": "clientes"
+  },
+  {
+    "Tables_in_agrimensura_db": "expediente"
+  },
+  {
+    "Tables_in_agrimensura_db": "expediente_cuotas"
+  },
+  {
+    "Tables_in_agrimensura_db": "expediente_firmante"
+  },
+  {
+    "Tables_in_agrimensura_db": "expediente_presupuesto"
+  },
+  {
+    "Tables_in_agrimensura_db": "expediente_presupuesto_items"
+  },
+  {
+    "Tables_in_agrimensura_db": "honorarios_categorias"
+  },
+  {
+    "Tables_in_agrimensura_db": "honorarios_notas"
+  },
+  {
+    "Tables_in_agrimensura_db": "honorarios_servicios"
+  },
+  {
+    "Tables_in_agrimensura_db": "terreno"
+  },
+  {
+    "Tables_in_agrimensura_db": "usuarios"
+  }
+]

@@ -1,0 +1,30 @@
+# Disable Caching for the entire application (Force browser to always fetch latest)
+<IfModule mod_headers.c>
+    # Disable caching for all files
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+
+    # Specifically target HTML files to ensure SPA entry points never cache
+    <FilesMatch "\.(html|htm|json)$">
+        Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    </FilesMatch>
+
+    # Disable ETags
+    Header unset ETag
+</IfModule>
+
+# Disable mod_expires if it's enabled to prevent conflicting cache instructions
+<IfModule mod_expires.c>
+    ExpiresActive Off
+</IfModule>
+
+# Ensure SPA routing works with Apache (Crucial for React/Vite/Next.js routes)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>

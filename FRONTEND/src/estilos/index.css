@@ -1,0 +1,654 @@
+/* Variables de colores */
+:root {
+  --principal: #213B21;
+  --principal-rgb: 33, 59, 33;
+
+  --fondo: #fbf7f1;
+  --fondo-rgb: 251, 247, 241;
+
+  --texto: #1a1a1a;
+  --texto-suave: #6f6f6f;
+
+  --blanco: #ffffff;
+  --blanco-rgb: 255, 255, 255;
+
+  --negro-rgb: 0, 0, 0;
+
+  /* Acentos (mismo rojo/marrón con distintas opacidades) */
+  --acento-rgb: 100, 30, 28;
+  --acento-2-rgb: 140, 40, 35;
+
+  --tarjeta: rgba(var(--blanco-rgb), 0.55);
+  --borde-suave: rgba(var(--acento-rgb), 0.22);
+}
+
+/* Reset básico para tamaños */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilo general del body */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+/* Global: Sacar subrayados */
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+span,
+label {
+  text-decoration: none !important;
+}
+
+/* Contenedor principal con sombra que sigue al mouse */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+      rgba(var(--principal-rgb), 0.26),
+      rgba(var(--principal-rgb), 0.12),
+      rgba(var(--fondo-rgb), 0.9) 60%,
+      var(--fondo) 100%);
+  transition: background 0.12s linear;
+}
+
+/* Caja central (login) */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 28px;
+  border-radius: 22px;
+
+  background: var(--tarjeta);
+  border: none;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow: 0 28px 70px rgba(var(--negro-rgb), 0.14),
+    0 1px 0 rgba(var(--blanco-rgb), 0.55) inset;
+
+  transform: translateY(0);
+}
+
+/* Título principal */
+.login-header h1 {
+  margin: 0;
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+}
+
+/* Texto de ayuda debajo del título */
+.login-header p {
+  margin: 8px 0 0;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+/* Formulario en columna */
+.login-form {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Etiquetas de inputs */
+.login-label {
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #2a2a2a;
+}
+
+/* Inputs con estilo suave */
+.login-input {
+  padding: 12px 14px;
+  font-size: 0.95rem;
+
+  border-radius: 12px;
+  border: 1px solid rgba(var(--negro-rgb), 0.12);
+  background: rgba(var(--blanco-rgb), 0.7);
+  color: var(--texto);
+
+  outline: none;
+  transition: box-shadow 0.2s ease, border 0.2s ease, transform 0.1s ease;
+}
+
+/* Placeholder más suave */
+.login-input::placeholder {
+  color: rgba(var(--negro-rgb), 0.35);
+}
+
+/* Efecto cuando el input está activo */
+.login-input:focus {
+  border: 1px solid rgba(var(--principal-rgb), 0.35);
+  box-shadow: 0 0 0 4px rgba(var(--principal-rgb), 0.12);
+}
+
+/* Botón principal */
+.login-button {
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.98rem;
+
+  color: var(--blanco);
+  background: linear-gradient(135deg,
+      rgba(var(--principal-rgb), 0.95),
+      rgba(var(--principal-rgb), 0.95));
+
+  box-shadow: 0 12px 30px rgba(var(--principal-rgb), 0.25);
+  transition: transform 0.12s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+/* Hover del botón */
+.login-button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(var(--principal-rgb), 0.32);
+}
+
+/* Click del botón */
+.login-button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 8px 20px rgba(var(--principal-rgb), 0.22);
+}
+
+/* Ajustes para pantallas chicas */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .login-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .login-header p {
+    font-size: 0.9rem;
+  }
+}
+
+/* DASHBOARD */
+/* Página del dashboard con glow MUY suave */
+.dashboard-pagina {
+  min-height: 100vh;
+  padding: 26px;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+      rgba(var(--principal-rgb), 0.1),
+      rgba(var(--fondo-rgb), 0.95) 55%,
+      var(--fondo) 100%);
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-header p {
+  margin: 6px 0 0;
+  color: var(--texto-suave);
+}
+
+/* Botones grandes y claros para gente mayor */
+.dashboard-acciones {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.boton-principal {
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--blanco);
+  background: linear-gradient(135deg,
+      rgba(var(--principal-rgb), 0.95),
+      rgba(var(--principal-rgb), 0.95));
+  box-shadow: 0 12px 30px rgba(var(--principal-rgb), 0.22);
+  transition: transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+.boton-principal:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(var(--principal-rgb), 0.28);
+}
+
+.boton-principal:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Botón especial con luz suave atrás */
+.boton-nueva-ficha {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botón Nueva ficha con glow afuera */
+.boton-nueva-ficha {
+  box-shadow: 0 12px 50px rgba(var(--principal-rgb), 0.22);
+  transition: transform 0.12s ease, box-shadow 0.2s ease;
+}
+
+/* Glow fuerte afuera cuando pasás el mouse */
+.boton-nueva-ficha:hover {
+  box-shadow: 0 0 0 6px rgba(var(--principal-rgb), 0.1),
+    0 0 22px rgba(var(--principal-rgb), 0.35),
+    0 18px 50px rgba(var(--principal-rgb), 0.32);
+  transform: translateY(-1px);
+}
+
+/* Click */
+.boton-nueva-ficha:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 0 0 4px rgba(var(--principal-rgb), 0.08),
+    0 0 14px rgba(var(--principal-rgb), 0.28),
+    0 10px 30px rgba(var(--principal-rgb), 0.22);
+}
+
+/* Mantiene el texto arriba de la luz */
+.boton-nueva-ficha {
+  z-index: 1;
+}
+
+.boton-secundario {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--principal-rgb), 0.15);
+  cursor: pointer;
+  font-weight: 600;
+  background: rgba(var(--blanco-rgb), 0.65);
+  transition: transform 0.12s ease;
+}
+
+.boton-secundario:hover {
+  transform: translateY(-1px);
+}
+
+/* Secciones */
+.dashboard-seccion {
+  background: var(--tarjeta);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 55px rgba(var(--negro-rgb), 0.08);
+}
+
+.dashboard-seccion h2 {
+  margin: 0 0 14px;
+  font-size: 1.2rem;
+}
+
+/* Input de búsqueda grande */
+.busqueda-input {
+  width: 100%;
+  padding: 14px 14px;
+  font-size: 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--negro-rgb), 0.12);
+  background: rgba(var(--blanco-rgb), 0.8);
+  outline: none;
+}
+
+.busqueda-input:focus {
+  border: 1px solid rgba(var(--principal-rgb), 0.28);
+  box-shadow: 0 0 0 4px rgba(var(--principal-rgb), 0.1);
+}
+
+/* Resultados de búsqueda */
+.busqueda-resultados {
+  margin-top: 12px;
+}
+
+.lista-resultados {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resultado-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(var(--blanco-rgb), 0.7);
+  border: 1px solid rgba(var(--principal-rgb), 0.08);
+}
+
+.resultado-sub {
+  margin-top: 4px;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.busqueda-vacio {
+  margin: 10px 0 0;
+  color: var(--texto-suave);
+}
+
+/* Botón tipo link */
+.boton-link {
+  border: none;
+  background: transparent;
+  color: var(--principal);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.boton-link:hover {
+  background: rgba(var(--principal-rgb), 0.08);
+}
+
+/* Contenedor de KPIs: compactos y alineados */
+/* KPIs: 1 sola fila en desktop (si no entran, scroll horizontal) */
+.etapas-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(150px, 1fr);
+  gap: 10px;
+
+  overflow-x: auto;
+  padding-bottom: 6px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Para que el scroll sea lindo (opcional) */
+.etapas-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.etapas-grid::-webkit-scrollbar-thumb {
+  background: rgba(var(--principal-rgb), 0.25);
+  border-radius: 999px;
+}
+
+/* KPI compacto (no ocupa todo el ancho) */
+.etapa-card {
+  position: relative;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(var(--principal-rgb), 0.95);
+  color: var(--blanco);
+  border: 1px solid rgba(var(--blanco-rgb), 0.12);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 70px;
+
+  box-shadow: 0 14px 30px rgba(var(--principal-rgb), 0.22),
+    0 1px 0 rgba(var(--blanco-rgb), 0.16) inset;
+
+  transition: transform 0.18s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+/* Brillo suave para que se vea premium */
+.etapa-card::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background: radial-gradient(circle at 20% 20%,
+      rgba(var(--blanco-rgb), 0.22),
+      rgba(var(--blanco-rgb), 0) 65%);
+  transform: rotate(10deg);
+  opacity: 0.75;
+}
+
+/* Efecto al pasar el mouse (sube apenas) */
+.etapa-card:hover {
+  box-shadow: 0 20px 50px rgba(var(--principal-rgb), 0.28),
+    0 1px 0 rgba(var(--blanco-rgb), 0.16) inset;
+}
+
+/* Nombre de etapa */
+.etapa-titulo {
+  position: relative;
+  font-weight: 800;
+  font-size: 0.92rem;
+  opacity: 0.95;
+}
+
+/* Número bien claro pero más chico */
+.etapa-numero {
+  position: relative;
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-top: 6px;
+}
+
+/* Link mini "Ver" */
+.etapa-card .boton-link {
+  position: relative;
+  align-self: flex-start;
+  margin-top: 8px;
+
+  padding: 6px 10px;
+  border-radius: 12px;
+
+  font-weight: 800;
+  font-size: 0.85rem;
+
+  color: var(--blanco);
+  background: rgba(var(--blanco-rgb), 0.13);
+}
+
+.etapa-card .boton-link:hover {
+  background: rgba(var(--blanco-rgb), 0.18);
+}
+
+/* Tabla */
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.tabla th,
+.tabla td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid rgba(var(--negro-rgb), 0.08);
+}
+
+.tabla th {
+  color: rgba(var(--negro-rgb), 0.6);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.etiqueta-etapa {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(var(--principal-rgb), 0.1);
+  color: var(--principal);
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+
+/* Alertas */
+.alertas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.alerta-card {
+  background: rgba(var(--blanco-rgb), 0.72);
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(var(--principal-rgb), 0.1);
+}
+
+.alerta-tipo {
+  font-weight: 900;
+  color: var(--principal);
+  margin-bottom: 6px;
+}
+
+.alerta-desc {
+  color: rgba(var(--negro-rgb), 0.75);
+}
+
+/* Responsive para tablets y celulares */
+@media (max-width: 920px) {
+  .etapas-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alertas-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Textura suave que se mueve (detalle distinto pero formal) */
+.dashboard-pagina::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 15% 10%,
+      rgba(var(--principal-rgb), 0.06),
+      transparent 55%),
+    radial-gradient(circle at 90% 70%,
+      rgba(var(--principal-rgb), 0.05),
+      transparent 60%);
+  animation: flotarFondo 9s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+@keyframes flotarFondo {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+
+  100% {
+    transform: translate3d(14px, -10px, 0px);
+  }
+}
+
+@media (max-width: 560px) {
+  .etapa-card .boton-link {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .etapas-grid {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+  }
+
+  .etapa-card {
+    min-height: 80px;
+    padding: 9px;
+  }
+
+  .etapa-titulo {
+    font-size: 0.85rem;
+  }
+
+  .etapa-numero {
+    font-size: 1.35rem;
+  }
+
+  .etapa-card .boton-link {
+    padding: 5px 8px;
+    font-size: 0.78rem;
+  }
+
+  .alertas-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .dashboard-pagina {
+    padding: 18px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.35rem;
+  }
+}
+
+/* Botón menú unificado (☰) */
+.boton-menu-unificado {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--principal-rgb), 0.15);
+  background: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  color: rgb(var(--principal-rgb));
+  line-height: 1;
+  transition: transform 0.12s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.boton-menu-unificado:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.boton-menu-unificado:active {
+  transform: translateY(1px) scale(0.98);
+}

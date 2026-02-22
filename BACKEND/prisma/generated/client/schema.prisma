@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model expediente {
+  id                               BigInt    @id @default(autoincrement())
+  cliente                          String?
+  direccion                        String?
+  depto                            String?
+  municipio                        Int?
+  seccion                          Int?
+  chacra                           Int?
+  manzana                          Int?
+  parcela                          String?
+  lote                             String?
+  partida_inmobiliaria             String?
+  objeto                           String?
+  fecha_relevamiento               DateTime? @db.Date
+  fecha_presentacion_municipalidad DateTime? @db.Date
+  expte_muni                       String?
+  certificado_catastral            String?
+  informe_dominial                 String?
+  fecha_ingreso_dominio            DateTime? @db.Date
+  fecha_egreso_dominio             DateTime? @db.Date
+  titular                          String?
+  responsable                      String?
+  telefono_contacto                String?
+  fecha_presupuesto                DateTime? @db.Date
+  falta_relevar                    Boolean?
+  importe_presupuesto              Decimal?  @db.Decimal(12, 2)
+  entrega                          Boolean?
+  fecha_libre_deuda                DateTime? @db.Date
+  aprobacion_muni                  Boolean?
+  disposicion_n                    String?
+  presentacion_dgc                 DateTime? @db.Date
+  expediente_n                     String?
+  previa_dgc                       DateTime? @db.Date
+  definitiva_dgc                   DateTime? @db.Date
+  visado_dgc                       DateTime? @db.Date
+  plano_registrado                 Boolean?
+  correccion                       Boolean?
+  campo1                           String?
+  terminado                        Boolean?
+}

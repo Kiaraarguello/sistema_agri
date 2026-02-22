@@ -1,0 +1,49 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
+    "studio": "npx prisma studio",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@prisma/client": "^7.3.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "docxtemplater": "^3.68.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.16.3",
+    "nodemailer": "^8.0.1",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^2.4.5",
+    "pdf.js-extract": "^0.2.1",
+    "pdf2json": "^4.0.2",
+    "pizzip": "^3.2.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^25.0.10",
+    "@types/nodemailer": "^7.0.11",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11",
+    "prisma": "^7.3.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

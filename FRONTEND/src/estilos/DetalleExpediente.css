@@ -1,0 +1,833 @@
+/* Estilos para el Detalle de Expediente */
+@import "./Expedientes.css";
+/* Heredamos variables y bases */
+
+.detalle-exp-pagina {
+    min-height: 100vh;
+    padding: 24px;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: "Inter", sans-serif;
+    font-size: 1.15rem;
+}
+
+/* Ocultar elementos al imprimir */
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    /* Ocultar absolutamente todo por defecto */
+    body * {
+        visibility: hidden;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Mostrar SOLO el contenido de la ficha */
+    .ficha-preview-content,
+    .ficha-preview-content * {
+        visibility: visible;
+    }
+
+    /* Reposicionar el contenido de la ficha para ocupar toda la página */
+    .ficha-preview-content {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: block !important;
+    }
+
+    /* Forzar que no haya fondos grises o overlays */
+    body,
+    .detalle-exp-pagina,
+    .overlay-modal,
+    .modal-presupuesto {
+        background: white !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Asegurar que el texto sea negro puro y tipografía legible */
+    .ficha-preview-content {
+        color: #000 !important;
+        font-family: 'Times New Roman', serif !important;
+        font-size: 12pt !important;
+    }
+
+    /* Ocultar bordes de tablas y otros si sobran */
+    .no-print {
+        display: none !important;
+    }
+}
+
+.detalle-header-grande {
+    background: var(--tarjeta, #fff);
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.detalle-titulo-bloque h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: var(--principal);
+}
+
+.detalle-nro {
+    font-size: 1.25rem;
+    color: var(--texto-suave);
+    margin-top: 4px;
+    font-weight: 500;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.detalle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.tarjeta-detalle {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid rgba(var(--principal-rgb), 0.1);
+    position: relative;
+}
+
+.boton-editar-seccion {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--texto-suave);
+    transition: all 0.2s ease;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.boton-editar-seccion:hover {
+    color: var(--principal);
+    background: rgba(var(--principal-rgb), 0.08);
+    transform: scale(1.1);
+}
+
+.acciones-edicion-seccion {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
+.tarjeta-titulo {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--principal);
+    padding-bottom: 6px;
+}
+
+.dato-fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.dato-label {
+    color: var(--texto-suave);
+    font-weight: 500;
+}
+
+.dato-valor {
+    font-weight: 600;
+    text-align: right;
+}
+
+.linea-tiempo {
+    margin-top: 24px;
+    padding-left: 10px;
+    border-left: 2px solid rgba(var(--principal-rgb), 0.2);
+}
+
+.evento-tiempo {
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.evento-tiempo::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    /* Ajuste para centrar en la línea de 2px */
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--principal);
+}
+
+.evento-fecha {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+.evento-titulo {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.acciones-detalle {
+    display: flex;
+    gap: 12px;
+}
+
+/* Autocomplete Custom Styles */
+.lista-autocomplete {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+}
+
+.lista-autocomplete li {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background 0.1s;
+}
+
+.lista-autocomplete li:last-child {
+    border-bottom: none;
+}
+
+.lista-autocomplete li:hover {
+    background: rgba(var(--principal-rgb), 0.05);
+}
+
+.lista-autocomplete strong {
+    color: var(--principal);
+}
+
+.lista-autocomplete small {
+    color: var(--texto-suave);
+}
+
+/* Ajustes Leaflet Cursor (Igual que en NuevoExpediente) */
+.leaflet-container {
+    z-index: 10;
+    cursor: pointer !important;
+}
+
+.leaflet-grab {
+    cursor: pointer !important;
+}
+
+.leaflet-dragging .leaflet-grab,
+.leaflet-grab:active {
+    cursor: grabbing !important;
+}
+
+/* --- Nuevos Estilos Agregados --- */
+
+/* Tarjeta Datos Generales (Resumen) */
+.datos-generales-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 10px;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.dato-resumen {
+    background: rgba(var(--principal-rgb), 0.03);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--principal-rgb), 0.05);
+    min-width: 0;
+}
+
+.dato-resumen label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dato-resumen strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--principal);
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tablet: 2 columnas */
+@media (max-width: 1024px) {
+    .datos-generales-grid {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile: 1 columna */
+@media (max-width: 600px) {
+    .datos-generales-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Timeline/Stepper Etapas */
+.etapas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.etapa-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.etapa-item.pasada .etapa-icon {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.etapa-item.actual {
+    background: rgba(var(--principal-rgb), 0.05);
+    border-color: var(--principal);
+}
+
+.etapa-item.actual .etapa-icon {
+    background: var(--principal);
+    color: white;
+    border-color: var(--principal);
+}
+
+.etapa-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #888;
+    background: white;
+    flex-shrink: 0;
+}
+
+.etapa-info {
+    flex: 1;
+}
+
+.etapa-nombre {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.etapa-desc {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.etapa-clickable:hover {
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+/* Secciones Documentos */
+.secciones-contenedor-full {
+    margin-top: 30px;
+}
+
+.secciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.seccion-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.seccion-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.seccion-titulo {
+    font-weight: 700;
+    color: var(--texto);
+    font-size: 1.2rem;
+}
+
+.estado-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Estados colores */
+.estado-pendiente {
+    background: #fff8e1;
+    color: #f57f17;
+}
+
+.estado-ok {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.estado-bloqueado {
+    background: #f5f5f5;
+    color: #9aa0a6;
+}
+
+.adjuntos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.adjunto-chip {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-nota {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+}
+
+/* layout pedido */
+.detalle-col-izq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.terreno-span {
+    grid-column: 1 / -1;
+}
+
+.mapa-terreno {
+    height: 150px;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 900px) {
+    .detalle-col-izq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- PRESUPUESTO Y COTIZACIÓN --- */
+.presupuesto-seccion {
+    margin-top: 40px;
+}
+
+.seccion-header-con-boton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.selector-servicio-presupuesto {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(var(--principal-rgb), 0.05);
+    border: 1px solid rgba(var(--principal-rgb), 0.1);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.input-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.input-grupo label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+}
+
+.input-grupo select,
+.input-grupo input,
+.input-grupo textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.tabla-presupuesto {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.tabla-presupuesto th {
+    text-align: left;
+    padding: 12px;
+    background: #f8f9fa;
+    color: #888;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #eee;
+}
+
+.tabla-presupuesto td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.input-presupuesto {
+    width: 110px;
+    padding: 8px;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* --- RESUMEN PRESUPUESTO BALANCED --- */
+.resumen-presupuesto-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    padding: 30px;
+    background: #fafafa;
+    border-radius: 20px;
+    border: 1px solid #eee;
+}
+
+.presupuesto-col-izq {
+    display: flex;
+    flex-direction: column;
+}
+
+.presupuesto-col-der {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.fila-resumen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.sena-fila {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 5px;
+}
+
+.total-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px;
+    background: var(--principal);
+    color: white;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(var(--principal-rgb), 0.2);
+}
+
+@media (max-width: 900px) {
+    .resumen-presupuesto-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media print {
+
+    .no-print,
+    .barra-lateral,
+    .barra-lateral-overlay,
+    .selector-servicio-presupuesto,
+    button {
+        display: none !important;
+    }
+
+    .resumen-presupuesto-grid {
+        border: none;
+        background: transparent;
+        padding: 0;
+    }
+
+    .total-fila {
+        background: #eee !important;
+        color: black !important;
+        border: 2px solid #000;
+        box-shadow: none;
+    }
+}
+
+/* --- CONTADORES Y BREAKDOWN --- */
+.contador-variable {
+    display: flex;
+    align-items: center;
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 2px;
+    width: fit-content;
+    border: 1px solid #ddd;
+}
+
+.btn-counter {
+    border: none;
+    background: white;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--principal);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-chico {
+    border: none !important;
+    background: transparent !important;
+    text-align: center;
+    width: 100px !important;
+    font-weight: 700;
+}
+
+/* --- MODAL PRESUPUESTO --- */
+.overlay-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-presupuesto {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-presupuesto h2 {
+    margin: 0;
+    color: var(--principal);
+    font-size: 1.8rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 12px;
+}
+
+.grid-edicion-pdf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.campo-edicion {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-edicion label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+}
+
+.campo-edicion input,
+.campo-edicion textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.campo-edicion textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.modal-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Estilos para la Ficha / Papel */
+.document-paper {
+    background: white;
+    padding: 50px 60px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+    line-height: 1.5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.document-paper h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.1rem !important;
+    border-bottom: 1.5px solid #333 !important;
+    color: #000 !important;
+}
+
+.document-paper ul {
+    margin-bottom: 15px;
+}
+
+.document-paper li {
+    margin-bottom: 4px;
+}
+
+.document-paper table th {
+    background: #f0f0f0 !important;
+    border: 1px solid #ccc !important;
+    color: #000 !important;
+    padding: 8px !important;
+}
+
+.document-paper table td {
+    border: 1px solid #eee !important;
+    color: #333 !important;
+    padding: 8px !important;
+}
+
+@media print {
+    .document-paper {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+}

@@ -1,0 +1,164 @@
+.portal-cliente-pagina {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Outfit', sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.portal-cliente-header {
+    background: var(--principal);
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(var(--principal-rgb), 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portal-cliente-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.portal-cliente-header p {
+    margin: 5px 0 0;
+    opacity: 0.9;
+}
+
+.portal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.portal-tarjeta {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.portal-tarjeta-titulo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--principal);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portal-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.portal-info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.portal-info-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.portal-info-valor {
+    font-size: 1rem;
+    color: #1e293b;
+    font-weight: 500;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-gestionado {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-pendiente {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.portal-presupuesto-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.portal-presupuesto-tabla th {
+    text-align: left;
+    padding: 12px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.portal-presupuesto-tabla td {
+    padding: 12px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+}
+
+.portal-total-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+}
+
+.portal-total-item {
+    text-align: right;
+}
+
+.portal-total-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.portal-total-valor {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--principal);
+}
+
+.btn-descargar {
+    background: var(--principal);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+    .portal-cliente-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}

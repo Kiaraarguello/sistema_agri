@@ -1,0 +1,409 @@
+/* Estilos para la página de Expedientes */
+
+.expedientes-pagina {
+    min-height: 100vh;
+    padding: 24px;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: "Inter", sans-serif;
+    font-size: 1.05rem;
+    overflow-x: hidden;
+
+    /* Efecto de fondo (gradiente sutil) */
+    background-image:
+        radial-gradient(at 10% 10%, rgba(var(--principal-rgb), 0.03) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(var(--principal-rgb), 0.03) 0px, transparent 50%);
+
+    /* Animación de entrada */
+    animation: fadeEntrada 0.4s ease-out;
+}
+
+@keyframes fadeEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+.expedientes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.expedientes-header-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.expedientes-h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+    color: var(--principal);
+}
+
+.expedientes-descripcion {
+    margin: 4px 0 0;
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+}
+
+/* Secciones (tarjetas blancas) */
+.expedientes-seccion {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(var(--principal-rgb), 0.08);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(10px);
+}
+
+.expedientes-seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.expedientes-h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--texto);
+}
+
+.expedientes-subtitulo {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+
+/* Barra de Búsqueda */
+.expedientes-barra-busqueda {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.expedientes-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--negro-rgb), 0.15);
+    background: var(--blanco);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.expedientes-input:focus {
+    border-color: var(--principal);
+    box-shadow: 0 0 0 3px rgba(var(--principal-rgb), 0.1);
+}
+
+.expedientes-input-busqueda {
+    padding-left: 20px;
+}
+
+.busqueda-grupo {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.expedientes-select-orden {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--negro-rgb), 0.15);
+    background: var(--blanco);
+    font-size: 0.95rem;
+    color: var(--texto);
+    cursor: pointer;
+    outline: none;
+    min-width: 220px;
+    transition: all 0.2s ease;
+}
+
+.expedientes-select-orden:focus {
+    border-color: var(--principal);
+    box-shadow: 0 0 0 3px rgba(var(--principal-rgb), 0.1);
+}
+
+@media (max-width: 600px) {
+    .busqueda-grupo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .expedientes-select-orden {
+        min-width: 100%;
+    }
+}
+
+/* Filtros (Chips) */
+.expedientes-filtros {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+}
+
+.expedientes-chip-filtro {
+    background: rgba(var(--principal-rgb), 0.05);
+    border: 1px solid rgba(var(--principal-rgb), 0.1);
+    color: var(--texto);
+    padding: 8px 16px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.expedientes-chip-filtro:hover {
+    background: rgba(var(--principal-rgb), 0.1);
+}
+
+.expedientes-chip-filtro.activo {
+    background: var(--principal);
+    color: var(--blanco);
+    border-color: var(--principal);
+}
+
+/* Tabla */
+.expedientes-tabla-contenedor {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--negro-rgb), 0.08);
+}
+
+.expedientes-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.expedientes-tabla th {
+    text-align: left;
+    padding: 6px 16px;
+    background: rgba(var(--principal-rgb), 0.03);
+    font-weight: 600;
+    color: var(--texto-suave);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.expedientes-tabla td {
+    padding: 6px 16px;
+    border-bottom: 1px solid rgba(var(--negro-rgb), 0.05);
+    font-size: 1.05rem;
+}
+
+.expedientes-tabla tr:last-child td {
+    border-bottom: none;
+}
+
+.expedientes-tabla tr:hover td {
+    background: rgba(var(--principal-rgb), 0.02);
+}
+
+/* Estados (Badges) */
+.estado-badge {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.estado-iniciado {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.estado-en-proceso {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.estado-finalizado {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.estado-archivado {
+    background: #f5f5f5;
+    color: #616161;
+}
+
+.estado-pausado {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* Botones */
+.expedientes-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.expedientes-boton-principal {
+    background: var(--principal);
+    color: var(--blanco);
+    box-shadow: 0 4px 12px rgba(var(--principal-rgb), 0.2);
+}
+
+.expedientes-boton-principal:hover {
+    background: #1a2f1a;
+    /* un poco más oscuro */
+    transform: translateY(-1px);
+}
+
+.expedientes-boton-secundario {
+    background: transparent;
+    border: 1px solid rgba(var(--negro-rgb), 0.2);
+    color: var(--texto);
+}
+
+.expedientes-boton-secundario:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.expedientes-acciones-tabla {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    color: var(--principal);
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: rgba(var(--principal-rgb), 0.05);
+}
+
+.btn-icon:hover {
+    background: rgba(var(--principal-rgb), 0.15);
+}
+
+/* Modal */
+.expedientes-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.expedientes-modal {
+    background: var(--tarjeta, #fff);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: modalZoom 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes modalZoom {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.expedientes-botones-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .expedientes-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .expedientes-tabla {
+        display: block;
+    }
+
+    .expedientes-tabla thead {
+        display: none;
+    }
+
+    .expedientes-tabla tbody,
+    .expedientes-tabla tr,
+    .expedientes-tabla td {
+        display: block;
+        width: 100%;
+    }
+
+    .expedientes-tabla tr {
+        margin-bottom: 16px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        padding: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .expedientes-tabla td {
+        border: none;
+        padding: 6px 0;
+        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .expedientes-tabla td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--texto-suave);
+        font-size: 0.85rem;
+    }
+}

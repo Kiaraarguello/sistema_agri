@@ -1,0 +1,35 @@
+GUÍA DE CONFIGURACIÓN DE BASE DE DATOS (DESDE CERO)
+===================================================
+
+Sigue estos pasos para levantar el proyecto en una computadora nueva:
+
+1. LEVANTAR POSTGRES (DOCKER)
+-----------------------------
+Ejecuta el siguiente comando en la terminal para crear y correr el contenedor de la base de datos:
+
+docker run --name postgres-agri -e POSTGRES_USER=agrimensura_user -e POSTGRES_PASSWORD=agrimensura_pass -e POSTGRES_DB=agrimensura -p 5432:5432 -d postgres
+
+2. CONFIGURAR EL BACKEND
+------------------------
+Asegúrate de que en la carpeta /BACKEND exista un archivo llamado '.env' con la siguiente línea:
+
+DATABASE_URL="postgresql://agrimensura_user:agrimensura_pass@localhost:5432/agrimensura?schema=public"
+
+3. IMPORTAR DATOS (EXCEL)
+-------------------------
+Para crear las tablas e importar los expedientes desde el archivo Excel:
+
+a) Ve a la carpeta /BD desde la terminal.
+b) (Opcional) Crea un entorno virtual de Python e instala las dependencias:
+   pip install pandas psycopg2-binary openpyxl python-dotenv
+c) Ejecuta el script de migración:
+   python migrate_excel.py
+
+4. INICIAR EL SISTEMA
+---------------------
+- En /BACKEND: ejecuta 'npm run dev' para iniciar la API.
+- En la raíz del proyecto: ejecuta 'npm run dev' para iniciar el frontend (Vite).
+
+CONEXIÓN COMPLETADA
+-------------------
+La base de datos se conectará automáticamente si los puertos y credenciales coinciden con el paso 1.

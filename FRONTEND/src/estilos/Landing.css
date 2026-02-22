@@ -1,0 +1,509 @@
+/* src/estilos/Landing.css */
+
+/* Animaciones y Tipografía */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--principal-rgb), 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(var(--principal-rgb), 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--principal-rgb), 0);
+    }
+}
+
+:root {
+    --principal: #213B21;
+    --principal-rgb: 33, 59, 33;
+    --fondo: #fbf7f1;
+    --fondo-rgb: 251, 247, 241;
+    --texto: #1a1a1a;
+    --blanco: #ffffff;
+    --acento: #8c2823;
+    /* Rojo amarronado usado en otros lados */
+    --hover-light: rgba(33, 59, 33, 0.08);
+    /* Verde muy suave */
+}
+
+/* Landing Page Container */
+.landing-page {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--texto);
+    background-color: var(--fondo);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Navbar Transparente/Blur */
+.landing-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background: rgba(var(--fondo-rgb), 0.85);
+    /* Fondo base sutil */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.landing-navbar.scrolled {
+    background: rgba(var(--fondo-rgb), 0.95);
+    padding: 0.8rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.landing-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--principal);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.landing-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.landing-link {
+    color: var(--texto);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.95rem;
+}
+
+.landing-link:hover {
+    color: var(--principal);
+}
+
+/* Botón Login Llamativo */
+.btn-login-landing {
+    padding: 0.6rem 1.4rem;
+    background: var(--principal);
+    color: var(--blanco);
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(var(--principal-rgb), 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 2px solid transparent;
+    /* Para el hover */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-login-landing:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(var(--principal-rgb), 0.4);
+    background: linear-gradient(135deg, #2a4d2a, #1a2f1a);
+}
+
+.btn-login-landing:active {
+    transform: translateY(1px);
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem 2rem;
+    background: linear-gradient(rgba(251, 247, 241, 0.4), rgba(251, 247, 241, 0.4)),
+        url('/imagenes_landing/hero-topografia.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 900px;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--principal);
+}
+
+.hero-title span {
+    background: linear-gradient(120deg, var(--principal) 0%, #4a8c4a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: #555;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-cta {
+    padding: 1rem 2rem;
+    background: var(--principal);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 10px 25px rgba(var(--principal-rgb), 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(var(--principal-rgb), 0.4);
+}
+
+.btn-secondary {
+    padding: 1rem 2rem;
+    background: transparent;
+    color: var(--principal);
+    border: 2px solid var(--principal);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: var(--hover-light);
+}
+
+/* Background Elements (Dynamism) */
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.5;
+    animation: float 6s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(33, 59, 33, 0.1);
+    top: -100px;
+    left: -100px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(140, 40, 35, 0.08);
+    bottom: 10%;
+    right: -50px;
+    animation-delay: 2s;
+}
+
+/* Features Section */
+.features-section {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--principal);
+    margin-bottom: 1rem;
+}
+
+.section-desc {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: var(--fondo);
+    padding: 2rem;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    /* Muy sutil por defecto */
+    z-index: -1;
+    transition: all 0.5s ease;
+    filter: grayscale(100%);
+}
+
+.feature-card:hover::before {
+    opacity: 0.25;
+    /* Más visible al hover */
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* Mapeo de imágenes específicas */
+.feature-expedientes::before {
+    background-image: url('/imagenes_landing/expediente-digital.webp');
+}
+
+.feature-presupuestos::before {
+    background-image: url('/imagenes_landing/sist-presupuesto.png');
+}
+
+.feature-alertas::before {
+    background-image: url('/imagenes_landing/alerta.png');
+}
+
+.feature-portal::before {
+    background-image: url('/imagenes_landing/cliente.webp');
+}
+
+.feature-geo::before {
+    background-image: url('/imagenes_landing/georreferencia.png');
+}
+
+.feature-movil::before {
+    background-image: url('/imagenes_landing/acceso-movil.jpg');
+}
+
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding: 1rem;
+    background: rgba(var(--principal-rgb), 0.1);
+    border-radius: 16px;
+    color: var(--principal);
+}
+
+.feature-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.feature-text {
+    color: #444;
+    /* Un poco más oscuro para mejor contraste */
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Showcase Section (Mockups) */
+.showcase-section {
+    padding: 3rem 2rem;
+    background: #f4f4f4;
+    /* Gris muy claro */
+    text-align: center;
+}
+
+.showcase-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.showcase-item {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    text-align: left;
+}
+
+.showcase-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.showcase-text {
+    flex: 1;
+}
+
+.showcase-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--principal);
+}
+
+.showcase-img-container {
+    flex: 1.2;
+    position: relative;
+}
+
+.showcase-img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s;
+}
+
+.showcase-img:hover {
+    transform: scale(1.02);
+}
+
+/* Stats Section */
+.stats-section {
+    padding: 4rem 2rem;
+    background: var(--principal);
+    color: white;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Footer Simple */
+.landing-footer {
+    padding: 3rem 2rem;
+    background: #111;
+    color: #aaa;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .showcase-item {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .landing-navbar {
+        padding: 1rem;
+    }
+
+    .landing-links {
+        display: none;
+    }
+
+    /* Ocultar links en mobile por simplicidad */
+    .hero-buttons {
+        flex-direction: column;
+    }
+}

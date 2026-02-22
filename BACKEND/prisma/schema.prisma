@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model expediente {
+  id                               BigInt    @id @default(autoincrement())
+  cliente                          String?   @db.LongText
+  terreno_id                       BigInt?
+  cliente_id                       Int?
+  partida_inmobiliaria             String?   @db.LongText
+  objeto                           String?   @db.LongText
+  fecha_relevamiento               DateTime? @db.Date
+  fecha_presentacion_municipalidad DateTime? @db.Date
+  expte_muni                       String?   @db.LongText
+  certificado_catastral            String?   @db.LongText
+  informe_dominial                 String?   @db.LongText
+  fecha_ingreso_dominio            DateTime? @db.Date
+  fecha_egreso_dominio             DateTime? @db.Date
+  titular                          String?   @db.LongText
+  responsable                      String?   @db.LongText
+  fecha_presupuesto                DateTime? @db.Date
+  falta_relevar                    Boolean?
+  importe_presupuesto              Decimal?  @db.Decimal(10, 2)
+  entrega                          Boolean?
+  fecha_libre_deuda                DateTime? @db.Date
+  aprobacion_muni                  Boolean?
+  disposicion_n                    String?   @db.LongText
+  presentacion_dgc                 DateTime? @db.Date
+  expediente_n                     String?   @db.LongText
+  previa_dgc                       DateTime? @db.Date
+  definitiva_dgc                   DateTime? @db.Date
+  visado_dgc                       DateTime? @db.Date
+  plano_registrado                 Boolean?
+  correccion                       Boolean?
+  campo1                           String?   @db.LongText
+  terminado                        Boolean?
+  notas                            String?   @db.Text
+  materiales                       String?   @db.Text
+  fecha_apertura                   DateTime? @db.DateTime(0)
+  pdf_catastro_file                String?   @db.VarChar(255)
+  cert_catastral_file              String?   @db.VarChar(255)
+  notas_relevamiento               String?   @db.Text
+}
+
+model terreno {
+  id               Int      @id @default(autoincrement())
+  expediente_id    BigInt?  @unique(map: "expediente_id")
+  designacion      String?  @db.VarChar(255)
+  direccion        String?  @db.VarChar(255)
+  latitud          Decimal? @db.Decimal(10, 8)
+  longitud         Decimal? @db.Decimal(11, 8)
+  superficie       String?  @db.VarChar(100)
+  pdf_catastro     String?  @db.VarChar(255)
+  pdf_ploteo       String?  @db.VarChar(255)
+  cert_catastral   String?  @db.VarChar(255)
+  depto            String?  @db.LongText
+  municipio        Int?
+  seccion          Int?
+  chacra           Int?
+  manzana          Int?
+  parcela          String?  @db.LongText
+  lote             String?  @db.LongText
+}
+
+model clientes {
+  id              Int       @id @default(autoincrement())
+  nombre_completo String    @db.VarChar(255)
+  dni_cuil        String?   @db.VarChar(50)
+  telefono        String?   @db.VarChar(50)
+  email           String?   @db.VarChar(100)
+  direccion       String?   @db.VarChar(255)
+  localidad       String?   @db.VarChar(100)
+  provincia       String?   @db.VarChar(100)
+  notas           String?   @db.Text
+  fecha_alta      DateTime? @default(now()) @db.DateTime(0)
+  activo          Boolean?  @default(true)
+}
+
+model usuarios {
+  id                Int       @id @default(autoincrement())
+  username          String    @unique(map: "username") @db.VarChar(50)
+  password          String    @db.VarChar(255)
+  nombre            String?   @db.VarChar(100)
+  intentos_fallidos Int?      @default(0)
+  bloqueado_hasta   DateTime? @db.DateTime(0)
+  created_at        DateTime? @default(now()) @db.Timestamp(0)
+  email             String?   @db.VarChar(100)
+  rol               String?   @default("admin") @db.VarChar(50)
+  activo            Boolean?  @default(true)
+  expediente_id     Int?
+}
+
+// ... other models could be added here to be complete, but I'll focus on these for now.

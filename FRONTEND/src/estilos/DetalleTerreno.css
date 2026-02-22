@@ -1,0 +1,238 @@
+/* DetalleTerreno.css */
+/* Usa variables globales de index.css */
+
+.detalle-terreno-pagina {
+    min-height: 100vh;
+    padding: 26px;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+            rgba(var(--principal-rgb), 0.1),
+            rgba(var(--fondo-rgb), 0.95) 55%,
+            var(--fondo) 100%);
+}
+
+.detalle-terreno-pagina::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 15% 10%, rgba(var(--principal-rgb), 0.06), transparent 55%),
+        radial-gradient(circle at 90% 70%, rgba(var(--principal-rgb), 0.05), transparent 60%);
+    animation: detalleFlotar 9s ease-in-out infinite alternate;
+    opacity: 0.9;
+}
+
+@keyframes detalleFlotar {
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    100% {
+        transform: translate3d(14px, -10px, 0px);
+    }
+}
+
+/* Header */
+.detalle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.detalle-header-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.detalle-titulo {
+    margin: 0;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+}
+
+.detalle-subtitulo {
+    margin: 6px 0 0;
+    color: var(--texto-suave);
+}
+
+.detalle-acciones {
+    display: flex;
+    gap: 10px;
+}
+
+/* Botones */
+.detalle-boton {
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 0.98rem;
+    transition: transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+.detalle-boton-secundario {
+    background: rgba(var(--blanco-rgb), 0.65);
+    border: 1px solid rgba(var(--principal-rgb), 0.15);
+    color: var(--texto);
+    box-shadow: 0 16px 40px rgba(var(--negro-rgb), 0.06);
+}
+
+.detalle-boton-secundario:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 55px rgba(var(--negro-rgb), 0.08);
+}
+
+.detalle-boton-principal {
+    color: var(--blanco);
+    background: linear-gradient(135deg, rgba(var(--principal-rgb), 0.95), rgba(var(--principal-rgb), 0.95));
+    box-shadow: 0 14px 38px rgba(var(--principal-rgb), 0.26);
+}
+
+.detalle-boton-principal:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: 0 18px 48px rgba(var(--principal-rgb), 0.32);
+}
+
+/* Secciones */
+.detalle-seccion {
+    background: rgba(var(--blanco-rgb), 0.6);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(var(--principal-rgb), 0.1);
+    box-shadow: 0 20px 55px rgba(var(--negro-rgb), 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.detalle-seccion-titulo {
+    margin: 0 0 16px;
+    font-size: 1.25rem;
+    font-weight: 950;
+    color: var(--texto);
+}
+
+/* Grid de datos */
+.detalle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.detalle-dato {
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(var(--blanco-rgb), 0.65);
+    border: 1px solid rgba(var(--principal-rgb), 0.08);
+}
+
+.detalle-dato-titulo {
+    font-weight: 950;
+    color: rgba(var(--negro-rgb), 0.62);
+    font-size: 0.92rem;
+}
+
+.detalle-dato-valor {
+    margin-top: 6px;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+}
+
+/* Catastro / Mapa */
+.detalle-catastro-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.detalle-mapa-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #e0e0e0;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 700;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
+    background-image: repeating-linear-gradient(45deg, #eee, #eee 10px, #f5f5f5 10px, #f5f5f5 20px);
+}
+
+.detalle-catastro-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detalle-info-card {
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(var(--principal-rgb), 0.05);
+    border: 1px solid rgba(var(--principal-rgb), 0.1);
+}
+
+.detalle-info-card p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: rgba(var(--negro-rgb), 0.8);
+}
+
+/* Expedientes */
+.detalle-expedientes-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detalle-expediente-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(var(--blanco-rgb), 0.75);
+    border: 1px solid rgba(var(--principal-rgb), 0.1);
+    transition: transform 0.1s ease;
+}
+
+.detalle-expediente-item:hover {
+    transform: translateX(4px);
+    background: rgba(var(--blanco-rgb), 0.9);
+}
+
+.detalle-exp-nombre {
+    font-weight: 900;
+    font-size: 1.05rem;
+}
+
+.detalle-exp-estado {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    background: rgba(var(--principal-rgb), 0.15);
+    color: rgba(var(--principal-rgb), 1);
+}
+
+.detalle-exp-estado.finalizado {
+    background: rgba(0, 150, 50, 0.15);
+    color: rgb(0, 120, 40);
+}
+
+.detalle-exp-estado.tramite {
+    background: rgba(220, 150, 0, 0.15);
+    color: rgb(180, 110, 0);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .detalle-catastro-container {
+        grid-template-columns: 1fr;
+    }
+}

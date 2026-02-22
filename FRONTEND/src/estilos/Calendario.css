@@ -1,0 +1,353 @@
+/* 
+  SISTEMA DE AGRIMENSURA - ESTILOS DEL CALENDARIO
+  Diseño moderno, amplio e intuitivo.
+*/
+
+:root {
+    --calendario-bg: #ffffff;
+    --calendario-borde: rgba(0, 0, 0, 0.08);
+    --dia-hover: rgba(var(--principal-rgb), 0.05);
+    --dia-seleccionado: rgba(var(--principal-rgb), 0.15);
+    --texto-suave: #666;
+}
+
+.calendario-pagina {
+    padding: 10px 35px;
+    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* --- CABECERA DEL CALENDARIO --- */
+.calendario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    background: rgba(var(--principal-rgb), 0.2);
+    padding: 12px 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.calendario-titulo {
+    margin: 0;
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #2c3e50;
+    text-transform: capitalize;
+}
+
+.calendario-controles {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.boton-cal {
+    background: rgba(var(--principal-rgb), 0.08);
+    /* Verde hueso / cremita */
+    border: 1px solid rgba(var(--principal-rgb), 0.15);
+    padding: 10px 18px;
+    border-radius: 11px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #334155;
+    font-size: 0.9rem;
+}
+
+.boton-cal:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.boton-cal-hoy {
+    background: rgba(var(--principal-rgb), 1);
+    color: white;
+    border: none;
+}
+
+.boton-cal-hoy:hover {
+    background: rgba(var(--principal-rgb), 0.9);
+    color: white;
+}
+
+/* --- GRILLA DEL CALENDARIO --- */
+.calendario-grid-contenedor {
+    background: rgba(var(--principal-rgb), 0.2);
+    /* Verde de la página al 0.2 de opacidad */
+    border-radius: 22px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--calendario-borde);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.calendario-dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 10px;
+}
+
+.dia-semana {
+    text-align: center;
+    font-weight: 700;
+    color: #444;
+    /* Un poco más oscuro para contraste */
+    font-size: 0.85rem;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+    /* Basado en el contenido o flex */
+    gap: 8px;
+    flex: 1;
+}
+
+.calendario-celda {
+    min-height: 80px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 14px;
+    padding: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    /* Mantenemos hidden el contenedor para los bordes redondeados */
+}
+
+/* ... existing hover and states ... */
+
+.calendario-celda.fuera-mes {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.calendario-celda.es-hoy {
+    background: rgba(var(--principal-rgb), 0.03);
+    border: 2px solid rgba(var(--principal-rgb), 0.4);
+}
+
+.celda-numero {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.es-hoy .celda-numero {
+    color: rgba(var(--principal-rgb), 1);
+}
+
+/* --- NOTAS DENTRO DEL CALENDARIO --- */
+.calendario-notes-lista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+    /* Permitir scroll interno en la celda si hay muchas notas */
+    padding-right: 2px;
+}
+
+/* Personalizar scrollbar de la celda */
+.calendario-notes-lista::-webkit-scrollbar {
+    width: 3px;
+}
+
+.calendario-notes-lista::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.nota-item {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    border-radius: 4px;
+    background: rgba(var(--principal-rgb), 0.1);
+    border: 1px solid rgba(var(--principal-rgb), 0.15);
+    color: #1e293b;
+    word-break: break-word;
+    /* Romper palabras si son largas */
+    border-left: 2px solid rgba(var(--principal-rgb), 0.8);
+    line-height: 1.2;
+}
+
+.indicador-mas {
+    font-size: 0.7rem;
+    color: var(--texto-suave);
+    text-align: center;
+    margin-top: 4px;
+}
+
+/* --- MODAL DE EDICIÓN --- */
+.modal-nota-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-nota-contenido {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+    animation: modalEntrada 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalEntrada {
+    from {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-nota-header {
+    margin-bottom: 20px;
+}
+
+.modal-nota-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #1e293b;
+}
+
+.modal-nota-header p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.textarea-nota {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--principal-rgb), 0.2);
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    resize: none;
+    background: rgba(var(--principal-rgb), 0.05);
+    /* Fondo cremita suave */
+    transition: all 0.2s ease;
+    color: #1e293b;
+}
+
+.textarea-nota:focus {
+    outline: none;
+    border-color: rgba(var(--principal-rgb), 0.5);
+    background: rgba(var(--principal-rgb), 0.1);
+    box-shadow: 0 0 0 4px rgba(var(--principal-rgb), 0.1);
+}
+
+.modal-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.boton-cerrar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #94a3b8;
+}
+
+@media (max-width: 1024px) {
+    .calendario-celda {
+        min-height: 100px;
+    }
+}
+
+/* --- ESTILOS EXTRA PARA ALERTAS Y BUSQUEDA --- */
+.alerta-item {
+    font-weight: 600;
+}
+
+.input-estilizado {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 128, 0, 0.2);
+    background: #fdfdfd;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    margin-top: 5px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.input-estilizado:focus {
+    border-color: #2c3e50;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-busqueda {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1001;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.item-busqueda {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.item-busqueda:hover {
+    background: #f8f9fa;
+}
+
+.item-busqueda strong {
+    color: #007bff;
+}

@@ -1,0 +1,50 @@
+# GUÍA DE CONEXIÓN A LA BASE DE DATOS (DOCKER + POSTGRES)
+
+Esta guía explica cómo poner en marcha la base de datos y conectar el sistema para un desarrollador nuevo.
+
+## 1. Levantar la Base de Datos (Docker)
+Si no tienes el contenedor andando, puedes crearlo con este comando:
+```bash
+docker run --name agrimensura-db -e POSTGRES_USER=agrimensura_user -e POSTGRES_PASSWORD=agrimensura_pass -e POSTGRES_DB=agrimensura -p 5432:5432 -d postgres
+```
+
+## 2. Configuración del Archivo .env
+Asegúrate de que en la carpeta `BACKEND` exista un archivo `.env` con las siguientes credenciales:
+```env
+DATABASE_URL="postgresql://agrimensura_user:agrimensura_pass@localhost:5432/agrimensura?schema=public"
+PORT=4000
+```
+
+## 3. Preparar la Base de Datos (Prisma)
+Una vez que el contenedor esté corriendo, ejecuta estos comandos en la carpeta `BACKEND`:
+
+```bash
+# Instalar dependencias
+npm install
+
+# Sincronizar las tablas con la BD
+npx prisma migrate dev --name init
+
+# Generar el cliente de Prisma
+npx prisma generate
+```
+
+## 4. Importar Datos desde Excel (Migración)
+Para cargar los 1,155 registros de clientes desde el archivo `migracion/CLIENTE.xlsx` a PostgreSQL:
+
+```bash
+npm run import-clientes
+```
+
+## 5. Ver los Datos Visualmente
+Si quieres verificar que todo se cargó correctamente sin usar comandos SQL:
+```bash
+npm run studio
+```
+Esto abrirá una página web en `http://localhost:5555` donde podrás navegar por las tablas de Clientes, Terrenos y Expedientes.
+
+## 6. Iniciar el Servidor Backend
+Para dejar el servidor funcionando y listo para recibir pedidos del Frontend:
+```bash
+npm run dev
+```

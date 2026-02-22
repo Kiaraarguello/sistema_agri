@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: MySQL-agrimensura
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: America/Argentina/Buenos_Aires
+      MYSQL_DATABASE: agrimensura_db
+      MYSQL_ROOT_PASSWORD: 9H7K!4QxR2p#M8V@Z5W
+      MYSQL_USER: agr_user_7XQ9P
+      MYSQL_PASSWORD: 6@PZ8!kQ2H#R9xM
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

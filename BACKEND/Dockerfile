@@ -1,31 +1,27 @@
-# Usa una imagen de Node.js ligera basada en Alpine
+# Backend Runtime
 FROM node:20-alpine
 
-# Instalamos dependencias del sistema necesarias para Prisma y otras librerías
+# Instalamos dependencias necesarias para Prisma
 RUN apk add --no-cache libc6-compat openssl
 
-# Seteamos el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiamos package.json y package-lock.json para aprovechar el cache de Docker
+# Copiamos el package.json para instalar dependencias primero (cacheable)
 COPY package*.json ./
-
-# Instalamos todas las dependencias (incluyendo devDependencies para usar ts-node)
 RUN npm install
 
-# Copiamos el resto de los archivos del backend
+# Copiamos el resto del código
 COPY . .
 
-# Generamos el cliente de Prisma para interactuar con la base de datos
+# Generamos el cliente de Prisma
 RUN npx prisma generate
 
-# Exponemos el puerto 4000 (el que usa tu servidor Express)
+# Exponemos el puerto del backend
 EXPOSE 4000
 
-# Definimos las variables de entorno recomendadas
-ENV NODE_ENV=production
 ENV PORT=4000
+ENV NODE_ENV=production
 
-# Iniciamos el servidor usando el script definido en package.json
-# Nota: "start" usa ts-node en este proyecto. Para producción real, lo ideal sería compilarlo.
+# Ejecutamos el inicio (ts-node según tu package.json)
 CMD ["npm", "run", "start"]
+

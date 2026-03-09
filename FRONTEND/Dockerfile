@@ -1,26 +1,18 @@
-# ---------- Build stage ----------
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# instalar dependencias
 COPY package*.json ./
 RUN npm install
 
-# copiar código
 COPY . .
 
-# generar build de React
 RUN npm run build
 
-
-# ---------- Runtime (Nginx) ----------
 FROM nginx:1.27-alpine
 
-# borrar config default
 RUN rm /etc/nginx/conf.d/default.conf
 
-# config nginx para SPA (React Router)
 RUN printf "server { \n\
   listen 80; \n\
   server_name _; \n\
@@ -39,7 +31,6 @@ RUN printf "server { \n\
   } \n\
 }" > /etc/nginx/conf.d/default.conf
 
-# copiar build generado
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80

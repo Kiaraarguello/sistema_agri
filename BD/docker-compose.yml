@@ -10,9 +10,9 @@ services:
     environment:
       TZ: America/Argentina/Buenos_Aires
       MYSQL_DATABASE: agrimensura_db
-      MYSQL_ROOT_PASSWORD: 9H7K!4QxR2p#M8V@Z5W
+      MYSQL_ROOT_PASSWORD: Agrimensura@root1
       MYSQL_USER: agr_user_7XQ9P
-      MYSQL_PASSWORD: 6@PZ8!kQ2H#R9xM
+      MYSQL_PASSWORD: Agrimensura@root1
     volumes:
       - mysql_data:/var/lib/mysql
 

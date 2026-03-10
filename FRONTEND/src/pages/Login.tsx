@@ -66,18 +66,13 @@ export default function Login() {
 
       const text = await res.text();
       let data;
-
-      try {
-        data = JSON.parse(text);
-      } catch {
-        console.error("Respuesta no JSON:", text);
-      throw new Error("El servidor no respondió con JSON válido");
-      }
-
-      if (!res.ok) {
-        throw new Error(data.mensaje || "Error al iniciar sesión");
-      }
-
+try {
+  data = await res.json();
+} catch (parseErr) {
+  const text = await res.text();
+  console.error("Error al parsear JSON. Respuesta del servidor:", text);
+  throw new Error("El servidor no respondió con un formato válido (JSON).");
+}
       localStorage.setItem("token", data.token);
       localStorage.setItem("usuario", JSON.stringify(data.usuario));
 

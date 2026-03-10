@@ -64,13 +64,14 @@ export default function Login() {
         body: JSON.stringify({ username, password })
       });
 
+      const text = await res.text();
       let data;
+
       try {
-        data = await res.json();
-      } catch (parseErr) {
-        const text = await res.text();
-        console.error("Error al parsear JSON. Respuesta del servidor:", text);
-        throw new Error("El servidor no respondió con un formato válido (JSON).");
+        data = JSON.parse(text);
+      } catch {
+        console.error("Respuesta no JSON:", text);
+      throw new Error("El servidor no respondió con JSON válido");
       }
 
       if (!res.ok) {

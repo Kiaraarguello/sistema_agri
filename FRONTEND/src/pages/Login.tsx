@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../config";
 
 export default function Login() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -58,21 +57,18 @@ export default function Login() {
     setCargando(true);
 
     try {
-      const res = await fetch(`${API_URL}/auth/login`, {
+      const res = await fetch("http://localhost:4000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
       });
 
-      const text = await res.text();
-      let data;
-try {
-  data = await res.json();
-} catch (parseErr) {
-  const text = await res.text();
-  console.error("Error al parsear JSON. Respuesta del servidor:", text);
-  throw new Error("El servidor no respondió con un formato válido (JSON).");
-}
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.mensaje || "Error al iniciar sesión");
+      }
+
       localStorage.setItem("token", data.token);
       localStorage.setItem("usuario", JSON.stringify(data.usuario));
 
